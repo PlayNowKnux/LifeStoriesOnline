@@ -1,0 +1,53 @@
+body {
+    font-family: sans-serif;
+}
+
+div.pawnProgress {
+    width: 80%;
+    max-height: calc(100% / 20);
+    vertical-align: top;
+    line-height: 100%;
+    font-size: 4vw;
+    display: flex;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    /*! float: ; */
+    margin: auto;
+    overflow-y: hidden;
+    position: relative;
+}
+
+div.percentWrapper {
+    width: 30%;
+    text-align: center;
+    display: inline-grid;
+    /*vertical-align: top;*/
+    /*! overscroll-behavior: contain; */
+}
+
+img.pawnImg {
+    vertical-align: top;
+}
+
+div.bar {
+    width: 61%;
+    height: 80%;
+    border-style:solid;
+    display: inline-block;
+    /*background-color: blue;*/
+    /*! overscroll-behavior: none; */
+    /*! overflow-x: visible; */
+    position: absolute;
+    right: 0px;
+}
+
+div.imgContainer {
+    display: inline;
+    height: 100%;
+    width: fit-content;
+}
+
+#progressBars {
+    /*! width: 100%; */
+    /*! margin: 0 auto; */    
+}
