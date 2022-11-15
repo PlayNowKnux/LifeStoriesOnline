@@ -1,0 +1,3 @@
+generate the positions for the paths automatically!
+
+maybe make the whole thing in plain html?
