@@ -5,11 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
+
+    <script src="cards/alternatives.js"></script>
+    <script src="cards/etchings.js"></script>
+    <script src="cards/memories.js"></script>
+    <script src="cards/valuables.js"></script>
     <title>LifeStories Online</title>
 </head>
 <body>
     <div id="game">
         <div id="progressBars"></div>
+    </div>
+
+    <div id="status" style="display:none">
+        <div id="reading">
+            <div id="message"></div>
+            <div id="card"></div>
+            <div id="cardButtons">
+                <br>
+                <button id="switchAlt" class="card-buttons">Alternative card</button>
+                <button id="finishTurn" class="card-buttons" onclick="finishTurn()">Finish turn</button>
+            </div>
+        </div>
     </div>
 </body>
 <script src="index.js">
