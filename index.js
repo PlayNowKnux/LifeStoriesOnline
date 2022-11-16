@@ -182,6 +182,9 @@ function switchScreen(scrn) {
                 document.getElementById("message").innerHTML += `${colorOrder[player].capitalize()} had to go back 3 spaces...`
                 document.getElementById("switchAlt").style.display = "none";
             }
+            break;
+        case "title":
+            //document.body.style.background = "var(--life-stories-gradient)"
     }
 
 }
@@ -260,6 +263,12 @@ function startGame() {
     var p = [0,0,0,0,0,0,0,0];
 
     var players = parseInt(document.getElementById("playerNum").value);
+
+    if (players > 8) {
+        alert("Too many players.");
+        return;
+    }
+    
     colorOrder = co.splice(0, players);
     percentages = p.splice(0, players);
     // start off with the first player

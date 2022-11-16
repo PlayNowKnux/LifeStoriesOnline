@@ -8,6 +8,8 @@
     --etchings-border: hsla(274, 100%, 58%, 1);
     --memories-border: hsla(176, 100%, 58%, 1);
     --alternatives-border: hsla(43, 100%, 58%, 1);
+
+    --life-stories-gradient: linear-gradient(to right, var(--valuables), var(--memories), var(--etchings), var(--alternatives));
 }
 
 body {
@@ -101,4 +103,19 @@ div.imgContainer {
     font-size: 2vw;
     margin: 0 1%;
     padding: 1%;
+}
+
+.game-title {
+    text-align: center;
+    background: var(--life-stories-gradient);
+}
+
+#title, #playerNum {
+    text-align: center;
+    font-size: 2vw;
+}
+
+#playButton {
+    font-size: 2vw;
+    padding: 1% 2%;
 }
