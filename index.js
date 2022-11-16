@@ -94,8 +94,8 @@ function createRow(color, index) {
     el.appendChild(imgContainer)
 
     var percentText = document.createElement('span');
-    let p = percentages[index] / 30;
-    p = p.toFixed(1) * 100;
+    let p = (percentages[index] / 30) * 100;
+    p = p.toFixed(1);
     percentText.setAttribute("id", "percentText-" + index);
     percentText.innerText = p + "%"
 
@@ -134,6 +134,7 @@ function switchScreen(scrn) {
             //document.body.style.backgroundColor = `hsl(${COLORS[colorOrder[player]][0]}, ${COLORS[colorOrder[player]][2]}%, ${COLORS[colorOrder[player]][3] - 30}%)`;
             document.getElementById("message").innerHTML = ""
             document.getElementById("card").innerHTML = ""
+            altCardOn = false;
 
             currentCard = ""
             currentAlt = ""
@@ -158,33 +159,66 @@ function switchScreen(scrn) {
             document.getElementById("message").innerHTML = `${colorOrder[player].capitalize()} rolled a ${roll}<br>`
 
             if (percentages[player] >= 30) {
+                won = true;
                 document.getElementById("message").innerHTML += `${colorOrder[player].capitalize()} wins!!`
+                document.getElementById("switchAlt").style.display = "inline"
+                document.getElementById("switchAlt").innerText = "Quit to title"
             } else if (type < 3) {
+                won = false;
                 document.getElementById("message").innerHTML += `${colorOrder[player].capitalize()} got a(n) ${TYPE_VALS[type].capitalize()} card!<br>`
+                document.getElementById("switchAlt").style.display = "inline"
+                document.getElementById("switchAlt").innerText = "Alternative card"
                 currentCard = pull_card(type)
                 document.getElementById("card").innerText = currentCard
             } else if (type == 3) {
+                won = false;
                 document.getElementById("message").innerHTML += `${colorOrder[player].capitalize()} got to move forward two spaces!`
+                document.getElementById("switchAlt").style.display = "none";
             } else {
+                won = false;
                 document.getElementById("message").innerHTML += `${colorOrder[player].capitalize()} had to go back 3 spaces...`
+                document.getElementById("switchAlt").style.display = "none";
             }
     }
 
 }
 
+function finishTurn() {
+    switchScreen("game")
+}
+
+var altCardOn = false;
+
+function altCard() {
+    if (!altCardOn) {
+        altCardOn = true;
+        if (!currentAlt) {
+            currentAlt = pull_card(3);
+        }
+        document.getElementById("card").innerText = currentAlt
+        document.getElementById("switchAlt").innerText = "Regular card"
+    } else {
+        altCardOn = false;
+        document.getElementById("card").innerText = currentCard
+        document.getElementById("switchAlt").innerText = "Alternative card"
+    }
+}
+
 var colorOrder = ["red", "blue", "yellow", "green", "brown", "orange", "pink", "black"];
-var percentages = [3,8,15,30,3,8,15,30];
+var percentages = [0,0,0,0,0,0,0,0];
 var player = 0;
 // 0 = valuables, 1 = etchings, 2 = memories, 3 = advance 2, 4 = go back 3
 var type = 0;
 var currentCard = ""
 var currentAlt = ""
+var won = false;
+
 
 function spawnPieces() {
     document.getElementById("progressBars").innerHTML = ""
     for (let i = 0; i < colorOrder.length; i++) {
-        let p = percentages[i] / 30;
-        p = p.toFixed(1) * 100;
+        let p = (percentages[i] / 30) * 100;
+        p = p.toFixed(1);
         document.getElementById("progressBars").innerHTML += createRow(colorOrder[i], i).outerHTML
         document.getElementById("bar-" + i).style.background = createProgressGradient(colorOrder[i], p)
     }
@@ -211,8 +245,6 @@ function spawnPieces() {
     document.getElementById("progressBars").appendChild(rollBtn)
 }
 spawnPieces();
-
-// game stuff
 
 switchScreen("status")
 
