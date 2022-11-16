@@ -145,6 +145,9 @@ function switchScreen(scrn) {
                 type = randint(3,4);
                 if (type - 3) {
                     percentages[player] -= 3;
+                    if (percentages[player] < 0) {
+                        percentages[player] = 0;
+                    }
                 } else {
                     percentages[player] += 2;
                 }
@@ -190,6 +193,10 @@ function finishTurn() {
 var altCardOn = false;
 
 function altCard() {
+    if (won) {
+        window.location.reload();
+        return;
+    }
     if (!altCardOn) {
         altCardOn = true;
         if (!currentAlt) {
@@ -246,8 +253,19 @@ function spawnPieces() {
 }
 spawnPieces();
 
-switchScreen("status")
+switchScreen("title")
 
+function startGame() {
+    var co = ["red", "blue", "yellow", "green", "brown", "orange", "pink", "black"];
+    var p = [0,0,0,0,0,0,0,0];
+
+    var players = parseInt(document.getElementById("playerNum").value);
+    colorOrder = co.splice(0, players);
+    percentages = p.splice(0, players);
+    // start off with the first player
+    player = -1
+    switchScreen("game")
+}
 
 function roll() {
     switchScreen("status")

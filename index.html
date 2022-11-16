@@ -13,7 +13,15 @@
     <title>LifeStories Online</title>
 </head>
 <body>
-    <div id="game">
+    <div id="title" style="display:none">
+        <h1>LifeStories online</h1>
+
+        <span>Players:</span>
+        <input type="number" min="2" max="8" value="4" id="playerNum">
+        <br>
+        <button id="playButton" onclick="startGame()">Play</button>
+    </div>
+    <div id="game" style="display:none">
         <div id="progressBars"></div>
     </div>
 
