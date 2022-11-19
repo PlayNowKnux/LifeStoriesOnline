@@ -10,7 +10,7 @@ What is an unusual occupation of a friend or relative?
 What is a habit you picked up from a relative?
 Tell about a favorite vacation experience.
 Tell about something unusual that happened in a restaurant.
-What effect to commercials have on you?
+What effect do commercials have on you?
 Tell a story about a New Year's Eve you will never forget.
 What was one of the first ways you earned money?
 Tell about an incident at a beauty or barber shop.
